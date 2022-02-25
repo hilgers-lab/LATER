@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Installation 
 
 ```install.packages("devtools")```
+
 ```devtools::install_github("cag1343/LORD", build = TRUE, build_vignettes = TRUE, build_opts = c("--no-resave-data", "--no-manual"))```
 
 ## Including Plots
