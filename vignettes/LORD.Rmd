@@ -1,0 +1,94 @@
+---
+title: "LORD"
+subtitle: "**L****o**ng **R**ead sequencing estimation of promoter **D**ominance"
+output:
+  html_document:
+    highligh: zenburn
+    theme: default
+    code_folding: 
+    toc: yes
+    toc_depth: 6
+    toc_float:
+      
+      collapsed: no
+pdf_document:
+  toc: yes
+editor_options: 
+  chunk_output_type: 
+vignette: >
+  %\VignetteIndexEntry{LORD}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(LORD)
+```
+
+# Example data
+
+For the vignette we use data from (Alfonso-Gonzalez, 2022) paper long read sequencing data from Drosophila embryos 14-16 hours. 
+
+```{r}
+data(embryoData, package = "LORD") 
+data(ensAnnot.r96, package = "LORD") 
+```
+
+
+# Create links database 
+
+Links database represents the isoforms links between 5'-3' 
+
+```{r, message=FALSE, warning=FALSE}
+database <- prepareLinksDatabase(ensAnnot.r96, tss.window = 50, tes.window = 150) 
+```
+
+The database classifies isoform and genes in the context of their TSS-PA regulation
+
+```{r, message=FALSE, warning=FALSE}
+head(database$pairDataBase,3)
+```
+
+# Count 5'-3' links 
+
+Using the database we can quantify which reads map to a given TSS and PA site keeping read identity. Results are normalized in counts per million.
+
+```{r,  message=FALSE, warning=FALSE}
+countsLongReads  <- countLinks(embryoData, database) 
+head(countsLongReads) 
+```
+
+# Calculate promoter dominance 
+
+```{r,  message=FALSE, warning=FALSE}
+promoterDominance <- calculatePromoterDominance(countsLongReads, database$pairDataBase)
+head(promoterDominance,3)
+```
+
+# Transcriptional bias 
+
+Transcriptional bias... in here we use fisher.test 
+
+```{r,  message=FALSE, warning=FALSE}
+transcriptionalBias <- estimateTranscriptionalBias(promoterDominance, method = "fisher")
+head(transcriptionalBias)
+```
+
+
+
+
+
+
+
+
+
+

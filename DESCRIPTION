@@ -1,0 +1,30 @@
+Package: LORD
+Title: Estimate promoter dominance using long read sequencing data
+Version: 0.1.0
+Authors@R: 
+    person("Carlos", "Alfonso-Gonzalez", , "alfonso@ie-freiburg.mpg.de", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Calculations of transcriptional biases in APA.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+biocViews:
+Imports: 
+    GenomicRanges,
+    dplyr,
+    GenomicFeatures,
+    AnnotationDbi,
+    BiocGenerics,
+    S4Vectors,
+    plyranges,
+    reshape,
+    edgeR,
+    maditr
+VignetteBuilder: knitr
