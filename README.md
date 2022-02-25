@@ -1,4 +1,4 @@
-LORD
+# LORD
 ## Long Read sequencing estimation of promoter Dominance
 -------
 
@@ -58,7 +58,7 @@ biasGenes <- estimateTranscriptionalBias(countData, linksDatabase$pairsDatabase,
 
 ## Contact
 
-LORD was develop by Carlos Alfonso-Gonzalez. For questions or feedback you can contact them at:
+Developer Carlos Alfonso-Gonzalez. For questions or feedback you can contact:
 
 alfonso@ie-freiburg.mpg.de
 
