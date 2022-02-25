@@ -1,6 +1,9 @@
 ---
-title: "L****o**ng **R**ead sequencing estimation of promoter **D**ominance"
-output: github_document"
+title: "**L****o**ng **R**ead sequencing estimation of promoter **D**ominance"
+subtitle: "**L****o**ng **R**ead sequencing estimation of promoter **D**ominance"
+author: "Carlos Alfonso Gonzalez"
+date: "2/25/2022"
+output: rmarkdown::github_document
 ---
 
 ```{r setup, include=FALSE}
