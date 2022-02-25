@@ -348,18 +348,20 @@ pre code {
 </div>
 
 
-<div id="long-read-sequencing-estimation-of-promoter-dominance" class="section level2">
-<h2><strong>Lo</strong>ng <strong>R</strong>ead sequencing estimation of promoter <strong>D</strong>ominance</h2>
-<p><code>{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE)</code></p>
-</div>
+<p>LORD ## Long Read sequencing estimation of promoter Dominance ——-</p>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
-<p><code>install.packages(&quot;devtools&quot;)</code> <code>devtools::install_github(&quot;cag1343/LORD&quot;, build = TRUE, build_vignettes = TRUE, build_opts = c(&quot;--no-resave-data&quot;, &quot;--no-manual&quot;))</code></p>
+<pre><code>install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;cag1343/LORD&quot;, build = TRUE, build_vignettes = TRUE)</code></pre>
+<p>The vignette contains some examples and interpretation of the results of the analysis</p>
+<pre><code>library(LORD)
+browseVignettes(&quot;LORD&quot;)</code></pre>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
+<div id="usage" class="section level2">
+<h2>Usage</h2>
 <p>You can also embed plots, for example:</p>
-<p><code>{r pressure, echo=FALSE} plot(pressure)</code></p>
+<p>```{r pressure, echo=FALSE} The vignette contains a detailed walk-through of how to use Sierra. The vignette can be access from R using:</p>
+<p>library(Sierra) browseVignettes(“Sierra”) ```</p>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </div>
 
