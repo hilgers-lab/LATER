@@ -12,12 +12,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```devtools::install_github("cag1343/LORD", build = TRUE, build_vignettes = TRUE, build_opts = c("--no-resave-data", "--no-manual"))```
 
-## Including Plots
+The vignette contains some examples and interpretation of the results of the analysis 
+```
+library(LORD)
+browseVignettes("LORD")
+```
+
+## Usage
 
 You can also embed plots, for example:
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+The vignette contains a detailed walk-through of how to use Sierra. The vignette can be access from R using:
+
+library(Sierra)
+browseVignettes("Sierra")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
