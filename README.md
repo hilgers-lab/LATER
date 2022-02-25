@@ -1,6 +1,6 @@
 ---
 title: "L****o**ng **R**ead sequencing estimation of promoter **D**ominance"
-output: html_document
+output: github_document"
 ---
 
 ```{r setup, include=FALSE}
