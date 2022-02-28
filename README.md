@@ -1,5 +1,5 @@
 # LORD
-## Long Read sequencing estimation of promoter Dominance
+## Long Read sequencing calculation of promoter Dominance
 -------
 
 
