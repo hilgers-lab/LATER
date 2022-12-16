@@ -1,5 +1,5 @@
-# LORD
-## Long Read sequencing calculation of promoter Dominance
+# ProLoR
+## Promoter influence estimation by Long Reads
 -------
 
 
@@ -7,18 +7,18 @@
 
 ```
 install.packages("devtools")
-devtools::install_github("cag1343/LORD", build = TRUE, build_vignettes = TRUE)
+devtools::install_github("cag1343/ProLoR", build = TRUE, build_vignettes = TRUE)
 ```
 
 The vignette contains some examples and interpretation of the results of the analysis 
 ```
 library(LORD)
-browseVignettes("LORD")
+browseVignettes("ProLoR")
 ```
 
 ## Usage
 
-LORD estimates transcriptional biases in APA using long read sequencing data 
+ProLoR estimates transcriptional biases in APA using long read sequencing data 
 
 ### Database creation 
 
