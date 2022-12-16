@@ -8,12 +8,19 @@
 #'
 #' @examples
 calculatePromoterDominance <- function(countData, pairsDataBase) {
+  # Assign count data to their respective 3'end and 5'ends.  
   annotPairsExp <-
     left_join(
       countData %>% dplyr::select(!gene_id),
       pairsDataBase %>% dplyr::distinct(pairs_id, .keep_all = TRUE),
       by = "pairs_id"
     )
+  # Calculate promoter dominance and other estimates. 
+  # promoterDominance: fraction of reads within a TSS-3'end site divided by the total number of the associated 3'end in the gene. 
+  # endDominance: Fraction of reads within a given TSS that expressed a given a 3'end. 
+  # endFraction: Fraction of 3'end expression over the total number of reads of the gene 
+  # startFraction: Fraction of TSS expression compare to total gene expression.
+  annotPairsExp <-
   annotPairsExp <-
     annotPairsExp %>% dplyr::group_by(tes_id) %>% dplyr::mutate(end_sum = sum(pairs_cpm)) %>%
     group_by(promoter_id) %>% dplyr::mutate(start_sum = sum(pairs_cpm)) %>% dplyr::group_by(pairs_id) %>% dplyr::mutate(pairs_sum = sum(pairs_cpm)) %>%
