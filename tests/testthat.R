@@ -1,4 +1,4 @@
 library(testthat)
-library(LORD)
+library(ProLoR)
 
-test_check("LORD")
+test_check("ProLoR")
