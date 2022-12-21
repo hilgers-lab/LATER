@@ -12,7 +12,7 @@ devtools::install_github("cag1343/ProLoR", build = TRUE, build_vignettes = TRUE)
 
 The vignette contains some examples and interpretation of the results of the analysis 
 ```
-library(LORD)
+library(ProLoR)
 browseVignettes("ProLoR")
 ```
 
