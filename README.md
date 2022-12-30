@@ -39,6 +39,8 @@ First, a database of 5'-3' isoforms is created based on the reference annotation
 
 
 ```
+annot_path <- system.file("exdata/dm6.annot.gtf.gz", package="ProLoR")
+refAnnotation <- rtracklayer::import.gff(annot_path)
 linksDatabase <- prepareLinkDatabase(refAnnotation, tss.window=50, tes.window=150)
 ```
 
@@ -47,8 +49,8 @@ linksDatabase <- prepareLinkDatabase(refAnnotation, tss.window=50, tes.window=15
 To account for accurate quantification we develop a counter for long read sequencing data. Aligned reads to the genome are trimmed to their most 5' and 3' end keeping the read identity only reads mapping to both TSS and PA site in the reference, are considered for the analisys. Reads are then summarized in counts per million for further processing. 
 
 ```
-rtracklayer::import.bed("./genomeAlignments.bed")
-countData <- countLinks(alignments, linksDatabase)
+bamPath <- system.file("exdata/testBam.bam", package = 'ProLoR')
+countData <- countLinks(bamPath, linksDatabase)
 ```
 
 
@@ -68,6 +70,12 @@ Transcriptional biases are calculated by estimating using the joint frequencies 
 ```
 biasGenes <- estimateTranscriptionalBias(countData, linksDatabase$pairsDatabase, method="fisher")
 ```
+# Release 
+
+Initial Release 0.1.0
+
+Release date: 22th Dec 2022
+This release corresponds to the ProLoR version used by Alfonso-Gonzalez et al. manuscript
 
 ## Contact
 
