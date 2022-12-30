@@ -1,3 +1,12 @@
+<!-- badges: start -->
+
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/hilgers-lab/ProLoR)
+[![Maintained?](https://img.shields.io/badge/Maintained%3F-Yes-brightgreen)](https://github.com/hilgers-lab/ProLoR/graphs/contributors)
+[![Install](https://img.shields.io/badge/Install-Github-brightgreen)](#installation)
+[![Downloads](https://img.shields.io/github/downloads/hilgers-lab/ProLoR/total)]()
+![GitHub](https://img.shields.io/github/license/hilgers-lab/ProLoR)
+<!-- badges: end -->
+
 # ProLoR
 ## Promoter influence estimation by Long Reads
 -------
@@ -19,6 +28,10 @@ vignette("ProLoR")
 ## Usage
 
 ProLoR estimates transcriptional biases in APA using long read sequencing data 
+
+# Input data: 
+  * Genome Alignment bam files [minimap2](https://github.com/lh3/minimap2) using parameters `minimap2 -ax splice -u f annotation/genome.fa long_read.fastq.gz | samtools sort -@ 4 -o output.bam - samtools index output.bam`
+  * Reference annotation in gtf format. Example file [here](https://github.com/hilgers-lab/ProLoR/blob/master/inst/exdata/dm6.annot.gtf.gz) 
 
 ### Database creation 
 
