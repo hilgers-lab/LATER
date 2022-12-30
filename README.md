@@ -7,13 +7,13 @@
 
 ```
 install.packages("devtools")
-devtools::install_github("cag1343/ProLoR", build = TRUE, build_vignettes = TRUE)
+devtools::install_github("hilgers-lab/ProLoR", build = TRUE, build_vignettes = TRUE)
 ```
 
 The vignette contains some examples and interpretation of the results of the analysis 
 ```
 library(ProLoR)
-browseVignettes("ProLoR")
+vignette("ProLoR")
 ```
 
 ## Usage

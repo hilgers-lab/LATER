@@ -8,14 +8,18 @@
 #' @import GenomicAlignments GenomicRanges dplyr edgeR S4Vectors
 #' @examples
 countLinks <- function(alignments, linksDatabase) {
+  bamAlignments <- GenomicAlignments::readGAlignments(alignments, use.names = TRUE)
+  alignmentsFile <- GenomicRanges::GRanges(bamAlignments)
+  alignmentsFile$name <- names(bamAlignments)
+  names(alignmentsFile) <- NULL
   # make single nt starts
-  startsAlignemnts <-  prepareForCountStarts(alignments, 1)
+  startsAlignemnts <-  prepareForCountStarts(alignmentsFile, 1)
   startAlignments <-
     readTSSassignment(startsAlignemnts, linksDatabase$TSSCoordinate.base)
   startAlignments <-
     startAlignments %>% as.data.frame(.) %>% dplyr::select(name, promoter_id)
   # make single nt ends
-  endsAlignemnts <-  prepareForCountEnds(alignments, 1)
+  endsAlignemnts <-  prepareForCountEnds(alignmentsFile, 1)
   endsAlignemnts <-
     readTESassignment(endsAlignemnts, linksDatabase$TESCoordinate.base)
   endsAlignemnts <-

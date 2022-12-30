@@ -1,5 +1,5 @@
-Package: LORD
-Title: Estimate promoter dominance using long read sequencing data
+Package: ProLoR
+Title: Promoter influence estimation by Long Reads
 Version: 0.1.0
 Authors@R: 
     person("Carlos", "Alfonso-Gonzalez", , "alfonso@ie-freiburg.mpg.de", role = c("aut", "cre"),
@@ -26,5 +26,7 @@ Imports:
     plyranges,
     reshape,
     edgeR,
-    maditr
+    maditr,
+    GenomicAlignments,
+    rtracklayer
 VignetteBuilder: knitr

@@ -21,6 +21,3 @@ promoterDatabase with classification of links
 prepareLinksDatabase
 Create a reference database of all TSS-TES link associations based on annotation
 }
-\examples{
-prepareLinksDatabase(annotation.gr, 50,150)
-}

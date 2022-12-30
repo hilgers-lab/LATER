@@ -7,7 +7,7 @@
 #' @return promoterDatabase with classification of links
 #' @export
 #' @import dplyr GenomicFeatures GenomicAlignments S4Vectors
-#' @examples prepareLinksDatabase(annotation.gr, 50,150)
+#' @examples
 prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
   strandSort <- function(x) {
     c(
@@ -52,8 +52,8 @@ prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
   bins$tss.bins <- tss.bins
   bins$tss.base <- tss.base
   tss.base <-
-    tibble::as_tibble(tss.base)  %>%  dplyr::group_by(value.group_name) %>%
-    dplyr::mutate(count =  paste0(value.group_name, ":P", sprintf("%02d", sequence(dplyr::n(
+    tibble::as_tibble(tss.base) %>% dplyr::group_by(value.group_name) %>%
+    dplyr::mutate(count = paste0(value.group_name, ":P", sprintf("%02d", sequence(dplyr::n(
     ))))) %>%
     GenomicRanges::makeGRangesFromDataFrame(., keep.extra.columns = TRUE)
   # annotate isoforms with promoter_id
