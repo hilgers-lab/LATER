@@ -74,7 +74,7 @@ biasGenes <- estimateTranscriptionalBias(countData, linksDatabase$pairsDatabase,
 
 Initial Release 0.1.0
 
-Release date: 22th Dec 2022
+Release date: 20th Dec 2022
 This release corresponds to the ProLoR version used by Alfonso-Gonzalez et al. manuscript
 
 ## Contact
