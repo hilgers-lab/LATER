@@ -39,7 +39,7 @@ prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
     strandSort(plyranges::mutate(plyranges::anchor_5p(dplyr::filter(e2, exon_rank ==
                                                                       1)), width = 1))
   # make unique TSS starts merging in a 50nt window.
-  cat("Preparing TSSBase\n")
+  message("Preparing TSSBase")
   tss.base <-
     strandSort(
       GenomicRanges::makeGRangesFromDataFrame(
@@ -67,6 +67,7 @@ prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
     plyranges::select(gene_id, transcript_id, promoter_id)
   # TES data base
   # last exon per transcript
+  message("Preparing TESBase")
   le <-
     GenomicRanges::makeGRangesFromDataFrame(
       e2 %>% group_by(transcript_id) %>% dplyr::filter(exon_rank  == max(exon_rank)),
@@ -75,7 +76,7 @@ prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
   tes.bins  <-
     strandSort(plyranges::mutate(plyranges::anchor_3p(le), width = 1))
   # make unique TSS starts merging in a 50nt window.
-  cat("PrepEndBase")
+  message("creating TES database")
   tes.base <-
     strandSort (
       GenomicRanges::makeGRangesFromDataFrame(
@@ -93,6 +94,7 @@ prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
     ))))) %>%
     GenomicRanges::makeGRangesFromDataFrame(., keep.extra.columns = TRUE)
   # assign tes_ids to isoforms
+  message("TES to isoform assignment")
   ii <- findOverlaps(tes.bins, tes.base, maxgap = tes.window - 1)
   tes.bins.annot <-
     GenomicRanges::makeGRangesFromDataFrame(rbind(data.frame(tes.bins[S4Vectors::queryHits(ii)],
@@ -103,6 +105,7 @@ prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
   bins$tes.bins <- tes.bins
   bins$tes.base <- tes.base
   # create link database
+  message("TSS/TES links database")
   linksDbs <- dplyr::left_join(as.data.frame(tes.bins.annot),
                                as.data.frame(tss.bins.annot),
                                by = "transcript_id") %>%
@@ -130,6 +133,7 @@ prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
     )
   # classify APA-ATSS genes
   # genes with more than 1 promoter different promoter
+  message("Gene types classification")
   atss.gene <- tt %>% dplyr::distinct(promoter_id, .keep_all = TRUE) %>%
     dplyr::group_by(gene_id) %>%  dplyr::filter(dplyr::n() > 1)  %>% dplyr::pull(gene_id)
   apa.gene <- tt %>% dplyr::distinct(tes_id, .keep_all = TRUE) %>%
@@ -178,6 +182,7 @@ prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
   result$TESCoordinate.base <- tes.base
   result$TSSCoordinate.bins <- tss.bins
   result$TSSCoordinate.base <- tss.base
+  message("Databse sucessfully created")
   return(result)
 }
 
