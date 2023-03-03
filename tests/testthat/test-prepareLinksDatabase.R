@@ -1,4 +1,4 @@
-annot_path <- system.file("exdata/dm6.annot.gtf.gz", package="SaiLoR")
+annot_path <- system.file("exdata/dm6.annot.gtf.gz", package="LATER")
 #annot_path <- "../data/dm6.annot.gtf.gz"
 ref_annot <- rtracklayer::import.gff(annot_path)
 # test junction reference generation

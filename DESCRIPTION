@@ -1,5 +1,5 @@
-Package: ProLoR
-Title: Promoter influence estimation by Long Reads
+Package: LATER
+Title: Long-read Analysis of transcription Termination Estimation and Recognition
 Version: 0.1.0
 Authors@R: 
     person("Carlos", "Alfonso-Gonzalez", , "alfonso@ie-freiburg.mpg.de", role = c("aut", "cre"),
