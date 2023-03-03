@@ -1,14 +1,14 @@
 <!-- badges: start -->
 
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/hilgers-lab/ProLoR)
-[![Maintained?](https://img.shields.io/badge/Maintained%3F-Yes-brightgreen)](https://github.com/hilgers-lab/ProLoR/graphs/contributors)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/hilgers-lab/LATER)
+[![Maintained?](https://img.shields.io/badge/Maintained%3F-Yes-brightgreen)](https://github.com/hilgers-lab/LATER/graphs/contributors)
 [![Install](https://img.shields.io/badge/Install-Github-brightgreen)](#installation)
-[![Downloads](https://img.shields.io/github/downloads/hilgers-lab/ProLoR/total)]()
-![GitHub](https://img.shields.io/github/license/hilgers-lab/ProLoR)
+[![Downloads](https://img.shields.io/github/downloads/hilgers-lab/LATER/total)]()
+![GitHub](https://img.shields.io/github/license/hilgers-lab/LATER)
 <!-- badges: end -->
 
-# ProLoR
-## Promoter influence estimation by Long Reads
+# LATER
+## Long-read Analysis of transcription Termination Estimation and Recognition
 -------
 
 
@@ -16,22 +16,22 @@
 
 ```
 install.packages("devtools")
-devtools::install_github("hilgers-lab/ProLoR", build = TRUE, build_vignettes = TRUE)
+devtools::install_github("hilgers-lab/LATER", build = TRUE, build_vignettes = TRUE)
 ```
 
 The vignette contains some examples and interpretation of the results of the analysis 
 ```
-library(ProLoR)
-vignette("ProLoR")
+library(LATER)
+vignette("LATER")
 ```
 
 ## Usage
 
-ProLoR estimates transcriptional biases in APA using long read sequencing data 
+LATER estimates transcriptional biases in APA using long read sequencing data 
 
 # Input data: 
   * Genome Alignment bam files [minimap2](https://github.com/lh3/minimap2) using parameters `minimap2 -ax splice -u f annotation/genome.fa long_read.fastq.gz | samtools sort -@ 4 -o output.bam - samtools index output.bam`
-  * Reference annotation in gtf format. Example file [here](https://github.com/hilgers-lab/ProLoR/blob/master/inst/exdata/dm6.annot.gtf.gz) 
+  * Reference annotation in gtf format. Example file [here](https://github.com/hilgers-lab/LATER/blob/master/inst/exdata/dm6.annot.gtf.gz) 
 
 ### Database creation 
 
@@ -39,7 +39,7 @@ First, a database of 5'-3' isoforms is created based on the reference annotation
 
 
 ```
-annot_path <- system.file("exdata/dm6.annot.gtf.gz", package="ProLoR")
+annot_path <- system.file("exdata/dm6.annot.gtf.gz", package="LATER")
 refAnnotation <- rtracklayer::import.gff(annot_path)
 linksDatabase <- prepareLinkDatabase(refAnnotation, tss.window=50, tes.window=150)
 ```
@@ -49,7 +49,7 @@ linksDatabase <- prepareLinkDatabase(refAnnotation, tss.window=50, tes.window=15
 To account for accurate quantification we develop a counter for long read sequencing data. Aligned reads to the genome are trimmed to their most 5' and 3' end keeping the read identity only reads mapping to both TSS and PA site in the reference, are considered for the analisys. Reads are then summarized in counts per million for further processing. 
 
 ```
-bamPath <- system.file("exdata/testBam.bam", package = 'ProLoR')
+bamPath <- system.file("exdata/testBam.bam", package = 'LATER')
 countData <- countLinks(bamPath, linksDatabase)
 ```
 
@@ -75,7 +75,7 @@ biasGenes <- estimateTranscriptionalBias(countData, linksDatabase$pairsDatabase,
 Initial Release 0.1.0
 
 Release date: 20th Dec 2022
-This release corresponds to the ProLoR version used by Alfonso-Gonzalez et al. manuscript
+This release corresponds to the LATER version used by Alfonso-Gonzalez et al. manuscript
 
 ## Contact
 
