@@ -5,6 +5,8 @@
 [![Install](https://img.shields.io/badge/Install-Github-brightgreen)](#installation)
 [![Downloads](https://img.shields.io/github/downloads/hilgers-lab/LATER/total)]()
 ![GitHub](https://img.shields.io/github/license/hilgers-lab/LATER)
+[![DOI](https://zenodo.org/badge/463514279.svg)](https://zenodo.org/badge/latestdoi/463514279)
+
 <!-- badges: end -->
 
 # LATER
