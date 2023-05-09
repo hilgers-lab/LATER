@@ -1,3 +1,4 @@
+
 #' count full length reads to 5'-'3 isoforms
 #'
 #' @param alignments genomic ranges object of alignments (samtools bam to bed)
@@ -7,7 +8,7 @@
 #' @export
 #' @import GenomicAlignments GenomicRanges dplyr edgeR S4Vectors
 #' @examples
-countLinks <- function(alignments, linksDatabase) {
+countLinks <- function(alignments, IsoformDatabase) {
   bamAlignments <- GenomicAlignments::readGAlignments(alignments, use.names = TRUE)
   alignmentsFile <- GenomicRanges::GRanges(bamAlignments)
   alignmentsFile$name <- names(bamAlignments)
@@ -15,22 +16,32 @@ countLinks <- function(alignments, linksDatabase) {
   # make single nt starts
   startsAlignemnts <-  prepareForCountStarts(alignmentsFile, 1)
   startAlignments <-
-    readTSSassignment(startsAlignemnts, linksDatabase$TSSCoordinate.base)
+    readTSSassignment(startsAlignemnts,
+                      TSSCoordinate.base(IsoformDatabase))
   startAlignments <-
-    startAlignments %>% as.data.frame(.) %>% dplyr::select(name, promoter_id)
+    startAlignments %>%
+    as.data.frame(.) %>%
+    dplyr::select(name, promoter_id)
   # make single nt ends
   endsAlignemnts <-  prepareForCountEnds(alignmentsFile, 1)
   endsAlignemnts <-
-    readTESassignment(endsAlignemnts, linksDatabase$TESCoordinate.base)
+    readTESassignment(endsAlignemnts,
+                      TESCoordinate.base(IsoformDatabase))
   endsAlignemnts <-
-    endsAlignemnts %>% as.data.frame(.) %>% dplyr::select(name, tes_id)
+    endsAlignemnts %>% as.data.frame(.) %>%
+    dplyr::select(name, tes_id)
   # make pairs
   pairsTested <-
-    left_join(endsAlignemnts, startAlignments, by = "name") %>% dplyr::filter(gsub("\\:.*", "", tes_id) == gsub("\\:.*", "", promoter_id))
+    left_join(endsAlignemnts,
+              startAlignments,
+              by = "name") %>%
+    dplyr::filter(gsub("\\:.*", "", tes_id) == gsub("\\:.*", "", promoter_id))
   pairsTested <-
     left_join(
       pairsTested,
-      linksDatabase$pairDataBase %>% dplyr::distinct(tes_id, .keep_all = TRUE) %>% dplyr::select(gene_id, tes_id),
+      showLinks(IsoformDatabase) %>%
+        dplyr::distinct(tes_id, .keep_all = TRUE) %>%
+        dplyr::select(gene_id, tes_id),
       by = "tes_id"
     )  %>%
     mutate(pairs_id = paste0(
@@ -41,18 +52,27 @@ countLinks <- function(alignments, linksDatabase) {
       gsub(".*:", "", pairsTested$tes_id)
     ))
   # summarize only reads that expand both pairs
-  countedPairs <- pairsTested %>% group_by(pairs_id) %>% tally()
+  countedPairs <- pairsTested %>%
+    group_by(pairs_id) %>%
+    tally() %>%
+    dplyr::rename(read_counts = n)
   countedPairsFinal <-
     left_join(
       countedPairs,
-      pairsTested %>% dplyr::distinct(pairs_id, .keep_all = TRUE) %>% dplyr::select(gene_id, pairs_id),
+      pairsTested %>%
+        dplyr::distinct(pairs_id, .keep_all = TRUE) %>%
+        dplyr::select(gene_id, pairs_id),
       by = "pairs_id"
     )
   # normalize expression in CPMs
-  dd <- edgeR::DGEList(counts = countedPairsFinal$n)
+  counts_final <- list()
+  dd <- edgeR::DGEList(counts = countedPairsFinal$read_counts)
   dge <- edgeR::calcNormFactors(dd)
-  countedPairsFinal$pairs_cpm <- as.numeric (cpm(dge))
-  return(countedPairsFinal)
+  countedPairsFinal$cpm <- as.numeric(edgeR::cpm(dge))
+  counts_final$countedPairsFinal <- countedPairsFinal
+  counts_final$pairsTested <- pairsTested
+  LATERcounts <- LATER(readAssignments = pairsTested, isoformCounts =countedPairsFinal )
+  return(LATERcounts)
 }
 #' prepare counts trimming the reads to their most 5' into a 1 nt window for counting
 #'
