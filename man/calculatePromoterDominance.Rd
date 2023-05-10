@@ -4,15 +4,12 @@
 \alias{calculatePromoterDominance}
 \title{Caculate promoter dominance}
 \usage{
-calculatePromoterDominance(countData, pairsDataBase)
+calculatePromoterDominance(LATER, IsoformDatabase)
 }
 \arguments{
 \item{countData}{counts data from 5'-3' links}
 
 \item{pairsDataBase}{database of 5'-3' link isoforms}
-}
-\value{
-
 }
 \description{
 Caculate promoter dominance

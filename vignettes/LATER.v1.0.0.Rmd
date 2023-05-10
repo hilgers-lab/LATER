@@ -1,0 +1,83 @@
+---
+title: "Long-reads-based Alternative Termination Estimation and Recognition (LATER)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LATER}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+```{r, eval = FALSE}
+library(devtools)
+devtools::install_github("hilgers-lab/LATER", build = TRUE)
+```
+
+
+# Reference annotation
+
+```{r, eval = FALSE, message=FALSE, warning=FALSE}
+# Download ensembl annotation 
+Annotation_url <- "https://ftp.ensembl.org/pub/release-109/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.109.gtf.gz"
+annotation_file_name <- "dmel_reference_annotation.gtf.gz"
+download.file(Annotation_url, annotation_file_name)
+# read file 
+reference_annotation <- rtracklayer::import.gff("dmel_reference_annotation.gtf.gz")
+protein_coding_exons <- reference_annotation[reference_annotation$type == "exon" & reference_annotation$gene_biotype == "protein_coding"]
+protein_coding_genes <- reference_annotation[reference_annotation$type == "gene" & reference_annotation$gene_biotype == "protein_coding"]
+```
+
+
+```{r, include = FALSE, message=FALSE, warning=FALSE}
+require(dplyr)
+ref_path <- system.file("exdata/dmel_reference_annotation.gtf.gz", 
+                        package = 'LATER')
+reference_annotation <- rtracklayer::import.gff(ref_path)
+protein_coding_exons <- reference_annotation[reference_annotation$type == "exon" & reference_annotation$gene_biotype == "protein_coding"]
+protein_coding_genes <- reference_annotation[reference_annotation$type == "gene" & reference_annotation$gene_biotype == "protein_coding"]
+```
+
+
+## Create IsoformAnnotation object 
+
+```{r}
+library(LATER)
+isoformData <- prepareIsoformDatabase(protein_coding_exons, 
+                                        tss.window = 50, 
+                                        tes.window = 150)
+```
+
+IsoformAnnotation contains the following slots:
+```{r}
+slotNames(isoformData)
+```
+
+This allows to retrieve data easily using: 
+```{r}
+showGene(isoformData, "FBgn0067779")
+```
+
+### Using custom TSS or 3'end databases 
+
+To use custom TSS or 3'end database to increase the detection of 5'/3' ends in the long read data the following functions can be used. 
+
+```{r}
+
+```
+
+
+
+
+
+
+
+

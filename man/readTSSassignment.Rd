@@ -11,9 +11,6 @@ readTSSassignment(startsAlignemnts, TSSCoordinate.base)
 
 \item{TSSCoordinate.base}{reference database for TSS}
 }
-\value{
-
-}
 \description{
 Title
 }

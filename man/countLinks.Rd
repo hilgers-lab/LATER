@@ -4,15 +4,12 @@
 \alias{countLinks}
 \title{count full length reads to 5'-'3 isoforms}
 \usage{
-countLinks(alignments, linksDatabase)
+countLinks(alignments, IsoformDatabase)
 }
 \arguments{
 \item{alignments}{genomic ranges object of alignments (samtools bam to bed)}
 
 \item{linksDatabase}{5'-3' isoform link database}
-}
-\value{
-
 }
 \description{
 count full length reads to 5'-'3 isoforms

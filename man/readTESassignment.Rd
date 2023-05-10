@@ -11,9 +11,6 @@ readTESassignment(endsAlignements, TESCoordinate.base)
 
 \item{TESCoordinate.base}{reference database for TES}
 }
-\value{
-
-}
 \description{
 Title
 }

@@ -4,7 +4,7 @@
 #'
 #' @return
 #' @export
-#'
+#' @import GenomicFeatures GenomicAlignments S4Vectors dplyr
 #' @examples
 strandSort <- function(x) {
   c(

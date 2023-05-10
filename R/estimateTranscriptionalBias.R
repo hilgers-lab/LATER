@@ -5,7 +5,7 @@
 #'
 #' @return table of significantly biased genes
 #' @export
-#'
+#' @import GenomicFeatures GenomicAlignments S4Vectors dplyr
 #' @examples
 estimateTranscriptionalBias  <-
   function(promoterDominanceTable, method) {

@@ -11,9 +11,6 @@ prepareForCountStarts(x, window)
 
 \item{window}{window for trimming}
 }
-\value{
-
-}
 \description{
 prepare counts trimming the reads to their most 5' into a 1 nt window for counting
 }

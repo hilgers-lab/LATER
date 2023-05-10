@@ -3,13 +3,13 @@
 #'
 #' @slot isoform_database data.frame.
 #' @slot TESCoordinate.bins GRanges.
-#' @slot TESCoordinate.base GRanges.
+#' @slot TESCoordinate.bas GRanges.
 #' @slot TSSCoordinate.bins GRanges.
 #' @slot TSSCoordinate.base GRanges.
-#' @importFrom GenomicRanges GRanges dplyr
+#' @importFrom GenomicRanges GRanges
 #' @return
 #' @exportClass IsoformDatabase
-#'
+#' @import GenomicFeatures GenomicAlignments S4Vectors dplyr
 #' @examples
 setClass("IsoformDatabase", slots = c(
   isoform_database = "data.frame",
@@ -69,122 +69,252 @@ setValidity("IsoformDatabase", function(object) {
   return(check)
 })
 
-#' @param x A PromoterAnnotation object
-#'
-#' @describeIn PromoterAnnotation-class Getter for intronRanges
-#' @exportMethod intronRanges
 
+#' showLinks
+#'
+#' @param x
+#'
+#' @return
+#' @export showLinks
+#'
+#' @examples
 setGeneric("showLinks", function(x) standardGeneric("showLinks"))
 
-#' @describeIn PromoterAnnotation-class Getter for intronRanges
-#' @aliases intronRanges,PromoterAnnotation-method
 
+#' showLinks
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export showLinks
+#'
+#' @examples
 setMethod("showLinks", "IsoformDatabase", function(x) x@isoform_database)
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @exportMethod promoterIdMapping
+#' isoform_database<-
+#'
+#' @param x
+#' @param value
+#'
+#' @return
+#' @export
+#'
+#' @examples
+setGeneric("showLinks<-",
+           function(x, value) standardGeneric("showLinks<-"))
 
+
+#' isoform_database
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
+setMethod("showLinks<-", "IsoformDatabase", function(x, value) {
+  x@isoform_database <- value
+  validObject(x)
+  x
+})
+
+#' TESCoordinate.bins
+#'
+#' @param x
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("TESCoordinate.bins",
            function(x) standardGeneric("TESCoordinate.bins"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
 
+
+#' TESCoordinate.base
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("TESCoordinate.bins", "IsoformDatabase",
           function(x) x@TESCoordinate.bins)
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @exportMethod promoterIdMapping
 
+#' TESCoordinate.base
+#'
+#' @param x
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("TESCoordinate.base",
            function(x) standardGeneric("TESCoordinate.base"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
 
+
+#' TESCoordinate.base M
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("TESCoordinate.base", "IsoformDatabase",
           function(x) x@TESCoordinate.base)
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @exportMethod promoterIdMapping
 
+#' Title
+#'
+#' @param x
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("TSSCoordinate.base",
            function(x) standardGeneric("TSSCoordinate.base"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
 
+#' TSSCoordinate.base
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("TSSCoordinate.base", "IsoformDatabase",
           function(x) x@TSSCoordinate.base)
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @exportMethod promoterIdMapping
 
+#' TSSCoordinate.bins
+#'
+#' @param x
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("TSSCoordinate.bins",
            function(x) standardGeneric("TSSCoordinate.bins"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
 
+#' TSSCoordinate.bins
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("TSSCoordinate.bins", "IsoformDatabase",
           function(x) x@TSSCoordinate.bins)
 
 
-#' @describeIn PromoterAnnotation-class Getter for promoterCoordinates
-#' @exportMethod promoterCoordinates
 
+#' TESCoordinate.base
+#'
+#' @param x
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("TESCoordinate.base",
            function(x) standardGeneric("TESCoordinate.base"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterCoordinates
-#' @aliases promoterCoordinates,PromoterAnnotation-method
 
+#' TESCoordinate.base
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("TESCoordinate.base", "IsoformDatabase",
           function(x) x@TESCoordinate.base)
 
 ###############
 ### Setters ###
 
-#' @param value intronRanges, promoterIdMapping or promoterCoordinates to
-#'   be assigned
-#'
-#' @describeIn PromoterAnnotation-class Setter for intronRanges
-#' @exportMethod 'intronRanges<-'
-#' @importFrom methods validObject
 
+#' isoform_database<-
+#'
+#' @param x
+#' @param value
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("isoform_database<-",
            function(x, value) standardGeneric("isoform_database<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for intronRanges
-#' @aliases 'intronRanges<-',PromoterAnnotation-method
 
+#' isoform_database
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("isoform_database<-", "IsoformDatabase", function(x, value) {
   x@isoform_database <- value
   validObject(x)
   x
 })
 
-#' @describeIn PromoterAnnotation-class Setter for promoterIdMapping
-#' @exportMethod 'promoterIdMapping<-'
-#' @importFrom methods validObject
 
+#' TESCoordinate.base
+#'
+#' @param x
+#' @param value
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("TESCoordinate.base<-",
            function(x, value) standardGeneric("TESCoordinate.base<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for promoterIdMapping
-#' @aliases 'promoterIdMapping<-',PromoterAnnotation-method
 
+#' Title
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("TESCoordinate.base<-", "IsoformDatabase", function(x, value) {
   x@TESCoordinate.base <- value
   validObject(x)
   x
 })
 
+#' TESCoordinate.bins
+#'
+#' @param x
+#' @param value
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("TESCoordinate.bins<-",
            function(x, value) standardGeneric("TESCoordinate.bins<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for promoterIdMapping
-#' @aliases 'promoterIdMapping<-',PromoterAnnotation-method
+#' @param IsoformDatabase
+#'
+#' @describeIn
+#' @aliases
 
 setMethod("TESCoordinate.bins<-", "IsoformDatabase", function(x, value) {
   x@TESCoordinate.bins <- value
@@ -192,11 +322,20 @@ setMethod("TESCoordinate.bins<-", "IsoformDatabase", function(x, value) {
   x
 })
 
+#' Title
+#'
+#' @param x
+#' @param value
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setGeneric("TSSCoordinate.bins<-",
            function(x, value) standardGeneric("TSSCoordinate.bins<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for promoterIdMapping
-#' @aliases 'promoterIdMapping<-',PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("TSSCoordinate.bins<-", "IsoformDatabase", function(x, value) {
   x@TSSCoordinate.bins <- value
@@ -204,15 +343,15 @@ setMethod("TSSCoordinate.bins<-", "IsoformDatabase", function(x, value) {
   x
 })
 
-#' @describeIn PromoterAnnotation-class Setter for promoterCoordinates
-#' @exportMethod 'promoterCoordinates<-'
-#' @importFrom methods validObject
+#' @describeIn
+
+#' @importFrom
 
 setGeneric("TSSCoordinate.base<-",
            function(x, value) standardGeneric("TSSCoordinate.base<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for promoterCoordinates
-#' @aliases 'promoterCoordinates<-',PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("TSSCoordinate.base<-", "IsoformDatabase", function(x, value) {
   x@TSSCoordinate.base <- value
@@ -222,16 +361,23 @@ setMethod("TSSCoordinate.base<-", "IsoformDatabase", function(x, value) {
 
 ## filtering and handling functions
 #' @describeIn TESCoordinate.bins
-#' @exportMethod get gene coordiantes
+
 
 setGeneric("addPromoterDatabase",
            function(x, custom_promoter_annotation,
                     reference_annotation,
                     window) standardGeneric("addPromoterDatabase"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
 
+
+#' Title
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("addPromoterDatabase", "IsoformDatabase", function(x,
                                                              custom_promoter_annotation,
                                                              reference_annotation,
@@ -272,7 +418,7 @@ setMethod("addPromoterDatabase", "IsoformDatabase", function(x,
 
 ## filtering and handling functions
 #' @describeIn TESCoordinate.bins
-#' @exportMethod get gene coordiantes
+
 
 setGeneric("add3pEndDatabase",
            function(x, custom_promoter_annotation,
@@ -322,5 +468,36 @@ setMethod("add3pEndDatabase", "IsoformDatabase", function(x,
 
 
 
+
+
+#' Title
+#'
+#' @param x
+#' @param GENE_ID
+#'
+#' @return
+#' @export
+#'
+#' @examples
+setGeneric("showGene", function(x,GENE_ID) standardGeneric("showGene"))
+
+
+#' sshowgene
+#'
+#' @param IsoformDatabase
+#'
+#' @return IsoformDatabase
+#'
+#' @examples
+#' @export
+setMethod("showGene", "IsoformDatabase", function(x, GENE_ID) {
+  showLinks(x) <- showLinks(x) %>% filter(gene_id %in% GENE_ID)
+  TESCoordinate.bins(x) <- TESCoordinate.bins(x) %>% filter(gene_id %in% GENE_ID)
+  TESCoordinate.base(x) <- TESCoordinate.base(x) %>% filter(gene_id %in% GENE_ID)
+  TSSCoordinate.bins(x) <- TSSCoordinate.bins(x) %>% filter(gene_id %in% GENE_ID)
+  TSSCoordinate.base(x) <- TSSCoordinate.base(x) %>% filter(gene_id %in% GENE_ID)
+  validObject(x)
+  x
+})
 
 

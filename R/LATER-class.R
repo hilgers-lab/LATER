@@ -5,7 +5,6 @@
 #' @slot stats data.frame.
 #' @slot readAssignments data.frame.
 #' @slot isoformCounts data.frame.
-#' @importFrom GenomicRanges GRanges dplyr
 #' @return
 #' @exportClass LATER
 #'
@@ -34,7 +33,6 @@ prototype = list(
 #' @param isoformCounts
 #'
 #' @return
-#' @export
 #'
 #' @examples
 LATER <-
@@ -68,62 +66,62 @@ setValidity("LATER", function(object) {
   return(check)
 })
 
-#' @param x A PromoterAnnotation object
+#' @param
 #'
-#' @describeIn PromoterAnnotation-class Getter for intronRanges
-#' @exportMethod intronRanges
+#' @describeIn
+
 
 setGeneric("result", function(x) standardGeneric("result"))
 
-#' @describeIn PromoterAnnotation-class Getter for intronRanges
-#' @aliases intronRanges,PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("result", "LATER", function(x) x@result)
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @exportMethod promoterIdMapping
+#' @describeIn
+
 
 setGeneric("stats",
            function(x) standardGeneric("stats"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("stats", "LATER",
           function(x) x@stats)
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @exportMethod promoterIdMapping
+#' @describeIn
+
 
 setGeneric("dominance",
            function(x) standardGeneric("dominance"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("dominance", "LATER",
           function(x) x@dominance)
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @exportMethod promoterIdMapping
+#' @describeIn
+
 
 setGeneric("readAssignments",
            function(x) standardGeneric("readAssignments"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("readAssignments", "LATER",
           function(x) x@readAssignments)
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @exportMethod promoterIdMapping
+#' @describeIn
+
 
 setGeneric("isoformCounts",
            function(x) standardGeneric("isoformCounts"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("isoformCounts", "LATER",
           function(x) x@isoformCounts)
@@ -133,18 +131,18 @@ setMethod("isoformCounts", "LATER",
 ###############
 ### Setters ###
 
-#' @param value intronRanges, promoterIdMapping or promoterCoordinates to
+#' @param value ,  or  to
 #'   be assigned
 #'
-#' @describeIn PromoterAnnotation-class Setter for intronRanges
-#' @exportMethod 'intronRanges<-'
-#' @importFrom methods validObject
+#' @describeIn
+
+#' @importFrom
 
 setGeneric("result<-",
            function(x, value) standardGeneric("result<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for intronRanges
-#' @aliases 'intronRanges<-',PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("result<-", "LATER", function(x, value) {
   x@result <- value
@@ -152,15 +150,15 @@ setMethod("result<-", "LATER", function(x, value) {
   x
 })
 
-#' @describeIn PromoterAnnotation-class Setter for promoterIdMapping
-#' @exportMethod 'promoterIdMapping<-'
+#' @describeIn
+
 #' @importFrom methods validObject
 
 setGeneric("stats<-",
            function(x, value) standardGeneric("stats<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for promoterIdMapping
-#' @aliases 'promoterIdMapping<-',PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("stats<-", "LATER", function(x, value) {
   x@stats <- value
@@ -172,8 +170,8 @@ setMethod("stats<-", "LATER", function(x, value) {
 setGeneric("dominance<-",
            function(x, value) standardGeneric("dominance<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for intronRanges
-#' @aliases 'intronRanges<-',PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("dominance<-", "LATER", function(x, value) {
   x@dominance <- value
@@ -184,8 +182,8 @@ setMethod("dominance<-", "LATER", function(x, value) {
 setGeneric("readAssignments<-",
            function(x, value) standardGeneric("readAssignments<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for promoterIdMapping
-#' @aliases 'promoterIdMapping<-',PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("readAssignments<-", "LATER", function(x, value) {
   x@readAssignments <- value
@@ -196,8 +194,8 @@ setMethod("readAssignments<-", "LATER", function(x, value) {
 setGeneric("isoformCounts<-",
            function(x, value) standardGeneric("isoformCounts<-"))
 
-#' @describeIn PromoterAnnotation-class Setter for promoterIdMapping
-#' @aliases 'promoterIdMapping<-',PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("isoformCounts<-", "LATER", function(x, value) {
   x@isoformCounts <- value
@@ -209,24 +207,24 @@ setMethod("isoformCounts<-", "LATER", function(x, value) {
 
 ##
 #' @describeIn TESCoordinate.bins
-#' @exportMethod get gene coordiantes
+
 
 setGeneric("addPromoterDatabase",
            function(x, custom_promoter_annotation,
                     reference_annotation,
                     window) standardGeneric("addPromoterDatabase"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("addPromoterDatabase", "IsoformDatabase", function(x,
                                                              custom_promoter_annotation,
                                                              reference_annotation,
                                                              window) {
-  # get only gene regions
+  #  only gene regions
   genes_protein_coding <- reference_annotation[reference_annotation$type == "gene" &
                                                  reference_annotation$gene_biotype == "protein_coding"]
-  # get only exon regions
+  #  only exon regions
   exons_coding <- reference_annotation[reference_annotation$type == "exon" &
                                          reference_annotation$gene_biotype == "protein_coding"]
   # subset promoter database for those not found in reference annotation
@@ -259,24 +257,24 @@ setMethod("addPromoterDatabase", "IsoformDatabase", function(x,
 
 ## filtering and handling functions
 #' @describeIn TESCoordinate.bins
-#' @exportMethod get gene coordiantes
+
 
 setGeneric("add3pEndDatabase",
            function(x, custom_promoter_annotation,
                     reference_annotation,
                     window) standardGeneric("add3pEndDatabase"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
+#' @describeIn
+#' @aliases
 
 setMethod("add3pEndDatabase", "IsoformDatabase", function(x,
                                                           custom_promoter_annotation,
                                                           reference_annotation,
                                                           window) {
-  # get only gene regions
+  #  only gene regions
   genes_protein_coding <- reference_annotation[reference_annotation$type == "gene" &
                                                  reference_annotation$gene_biotype == "protein_coding"]
-  # get only exon regions
+  #  only exon regions
   exons_coding <- reference_annotation[reference_annotation$type == "exon" &
                                          reference_annotation$gene_biotype == "protein_coding"]
   # subset promoter database for those not found in reference annotation

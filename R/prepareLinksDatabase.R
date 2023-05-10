@@ -6,7 +6,7 @@
 #'
 #' @return promoterDatabase with classification of links
 #' @export
-#' @import dplyr GenomicFeatures GenomicAlignments S4Vectors
+#' @import GenomicFeatures GenomicAlignments S4Vectors
 #' @examples
 prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
   strandSort <- function(x) {

@@ -1,14 +1,15 @@
-#' prepareLinksDatabase
+
+#' prepareIsoformDatabase
 #' Create a reference database of all TSS-TES link associations based on annotation
+#'
 #' @param annotation reference annotation GenomicRanges object
 #' @param tss.window window to consider distinct TSS
 #' @param tes.window window to consider distinct TES
 #'
 #' @return promoterDatabase with classification of links
-#' @export
-#' @import dplyr GenomicFeatures GenomicAlignments S4Vectors
-#' @examples
-prepareLinksDatabase <- function(annotation, tss.window, tes.window) {
+#' @import GenomicFeatures GenomicAlignments S4Vectors dplyr
+#' @export prepareIsoformDatabase
+prepareIsoformDatabase <- function(annotation, tss.window, tes.window) {
   Isoform_Database <- IsoformDatabase()
   # Build 5'-3' links data base
   # Exon ids

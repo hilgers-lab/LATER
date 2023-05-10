@@ -5,7 +5,7 @@
 #'
 #' @return
 #' @export
-#'
+#' @import GenomicFeatures GenomicAlignments S4Vectors dplyr
 #' @examples
 calculatePromoterDominance <- function(LATER, IsoformDatabase) {
   countData <- isoformCounts(LATER)

@@ -1,6 +1,6 @@
 Package: LATER
 Title: Long-read Analysis of transcription Termination Estimation and Recognition
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: 
     person("Carlos", "Alfonso-Gonzalez", , "alfonso@ie-freiburg.mpg.de", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
@@ -8,7 +8,7 @@ Description: Calculations of transcriptional biases in APA.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Suggests: 
     knitr,
     rmarkdown,
@@ -27,5 +27,7 @@ Imports:
     edgeR,
     maditr,
     GenomicAlignments,
-    rtracklayer
+    rtracklayer,
+    methods,
+    tibble
 VignetteBuilder: knitr

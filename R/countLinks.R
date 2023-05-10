@@ -6,7 +6,7 @@
 #'
 #' @return
 #' @export
-#' @import GenomicAlignments GenomicRanges dplyr edgeR S4Vectors
+#' @import GenomicAlignments GenomicRanges edgeR S4Vectors
 #' @examples
 countLinks <- function(alignments, IsoformDatabase) {
   bamAlignments <- GenomicAlignments::readGAlignments(alignments, use.names = TRUE)
