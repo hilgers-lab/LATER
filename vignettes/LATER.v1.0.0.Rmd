@@ -70,10 +70,50 @@ showGene(isoformData, "FBgn0067779")
 
 To use custom TSS or 3'end database to increase the detection of 5'/3' ends in the long read data the following functions can be used. 
 
-```{r}
-
+```{r, eval=FALSE}
+url <- "https://ftp.ensembl.org/pub/release-109/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.32.109.gtf.gz"
+file_name <- " dmel_tss_annotation.gtf.gz "
+download.file(url, file_name)
+ref_tss_annot <- rtracklayer::import.gff("dmel_tss_annotation.gtf.gz")
 ```
 
+This database can be used to increase the TSS repertoire of the IsoformDatabase 
+
+```{r, eval=FALSE}
+isoformData  <- addPromoterDatabase(isoformData, 
+                                         ref_tss_annot, 
+                                         protein_coding_genes, 
+                                         window = 50)
+```
+
+# Counting 5'-3' isoforms 
+
+countData object is a LATER object containing all the relevant information for full-length quantification. The slots added at this step are: `LATER@readAssignments` that contains the read_id and their assigned features, `LATER@isoformCounts` that contains the summarized counts per 5'-3' isoform. 
+
+```{r}
+bamPath <- system.file("exdata/testBam.bam", package = 'LATER')
+countData <- countLinks(bamPath, isoformData)
+```
+
+Read ids can be easily exported using the follwing code: 
+
+```{r, eval=FALSE}
+readr::write_tsv(readAssignments(countData), "read_assignments.txt")
+```
+
+bam files can be easily substeed using this read ids using the following code on linux
+
+```{bash}
+samtools view -N read_assignments.txt -o filtered_output.bam output.bam
+```
+
+# Statistical testing of 5’-3’ couplings. 
+
+Using this counts we can now estimate 5’-3’ links from the read counts, using multinomial testing. 
+
+```{r}
+gene_bias_estimates <- estimatePromoterDominance(countData, isoformData, method="fisher")
+```
 
 
 

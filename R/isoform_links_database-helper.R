@@ -7,7 +7,7 @@
 #' @param tes.window window to consider distinct TES
 #'
 #' @return promoterDatabase with classification of links
-#' @import GenomicFeatures GenomicAlignments S4Vectors dplyr
+#' @import GenomicFeatures GenomicAlignments S4Vectors dplyr tibble
 #' @export prepareIsoformDatabase
 prepareIsoformDatabase <- function(annotation, tss.window, tes.window) {
   Isoform_Database <- IsoformDatabase()
@@ -233,3 +233,10 @@ prepareIsoformDatabase <- function(annotation, tss.window, tes.window) {
   )
   return(complete.isoformDatabase)
 }
+
+
+
+
+
+
+

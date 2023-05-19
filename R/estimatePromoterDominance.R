@@ -1,3 +1,11 @@
+#' estimatePromoterDominance
+#'
+#' @param LATER
+#' @param IsoformDatabase
+#' @param method
+#'
+#' @return
+#' @export
 estimatePromoterDominance <- function(LATER, IsoformDatabase, method) {
   dominance <- calculatePromoterDominance(LATER, IsoformDatabase)
   transcriptional_bias <- estimateTranscriptionalBias(dominance, method)

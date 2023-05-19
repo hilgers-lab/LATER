@@ -78,6 +78,35 @@ setGeneric("result", function(x) standardGeneric("result"))
 
 setMethod("result", "LATER", function(x) x@result)
 
+
+#' show
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
+setGeneric("show", function(x) standardGeneric("show"))
+#' show
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
+setMethod("show", "LATER", function(x) {
+  str(isoformCounts(x),max.level = 2, vec.len = 3, strict.width = "wrap")
+  str(readAssignments(x),max.level = 2,  vec.len = 3, strict.width = "wrap")
+  str(dominance(x),max.level = 2,  vec.len = 3, strict.width = "wrap")
+  str(stats(x),max.level = 2,  vec.len = 3, strict.width = "wrap")
+  str(result(x),max.level = 2,  vec.len = 3, strict.width = "wrap")
+  })
+
+
+
+
 #' @describeIn
 
 
@@ -182,9 +211,11 @@ setMethod("dominance<-", "LATER", function(x, value) {
 setGeneric("readAssignments<-",
            function(x, value) standardGeneric("readAssignments<-"))
 
+#' @param LATER
+#'
 #' @describeIn
 #' @aliases
-
+#' @export
 setMethod("readAssignments<-", "LATER", function(x, value) {
   x@readAssignments <- value
   validObject(x)
