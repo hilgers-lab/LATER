@@ -12,7 +12,7 @@ prepareIsoformDatabase(annotation, tss.window, tes.window)
 
 \item{tss.window}{window to consider distinct TSS}
 
-\item{tes.window}{window to consider distinct TES}
+\item{tes.window}{window to consider distinct TESassemblies}
 }
 \value{
 promoterDatabase with classification of links

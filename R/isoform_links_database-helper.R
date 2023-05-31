@@ -4,7 +4,7 @@
 #'
 #' @param annotation reference annotation GenomicRanges object
 #' @param tss.window window to consider distinct TSS
-#' @param tes.window window to consider distinct TES
+#' @param tes.window window to consider distinct TESassemblies
 #'
 #' @return promoterDatabase with classification of links
 #' @import GenomicFeatures GenomicAlignments S4Vectors dplyr tibble

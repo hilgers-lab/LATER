@@ -73,9 +73,15 @@ setValidity("LATER", function(object) {
 
 setGeneric("result", function(x) standardGeneric("result"))
 
-#' @describeIn
-#' @aliases
 
+#' result
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("result", "LATER", function(x) x@result)
 
 
@@ -113,9 +119,15 @@ setMethod("show", "LATER", function(x) {
 setGeneric("stats",
            function(x) standardGeneric("stats"))
 
-#' @describeIn
-#' @aliases
 
+#' stats
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("stats", "LATER",
           function(x) x@stats)
 
@@ -125,21 +137,30 @@ setMethod("stats", "LATER",
 setGeneric("dominance",
            function(x) standardGeneric("dominance"))
 
-#' @describeIn
-#' @aliases
-
+#' dominance
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("dominance", "LATER",
           function(x) x@dominance)
-
-#' @describeIn
 
 
 setGeneric("readAssignments",
            function(x) standardGeneric("readAssignments"))
 
-#' @describeIn
-#' @aliases
 
+#' readAssignments
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("readAssignments", "LATER",
           function(x) x@readAssignments)
 
@@ -170,9 +191,16 @@ setMethod("isoformCounts", "LATER",
 setGeneric("result<-",
            function(x, value) standardGeneric("result<-"))
 
-#' @describeIn
-#' @aliases
 
+
+#' result
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("result<-", "LATER", function(x, value) {
   x@result <- value
   validObject(x)
@@ -186,9 +214,14 @@ setMethod("result<-", "LATER", function(x, value) {
 setGeneric("stats<-",
            function(x, value) standardGeneric("stats<-"))
 
-#' @describeIn
-#' @aliases
-
+#' stats
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("stats<-", "LATER", function(x, value) {
   x@stats <- value
   validObject(x)
@@ -199,9 +232,15 @@ setMethod("stats<-", "LATER", function(x, value) {
 setGeneric("dominance<-",
            function(x, value) standardGeneric("dominance<-"))
 
-#' @describeIn
-#' @aliases
 
+#' Title
+#'
+#' @param LATER
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("dominance<-", "LATER", function(x, value) {
   x@dominance <- value
   validObject(x)
@@ -335,4 +374,11 @@ setMethod("add3pEndDatabase", "IsoformDatabase", function(x,
   return(x)
 }
 )
+
+
+
+
+
+
+
 

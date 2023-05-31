@@ -417,17 +417,28 @@ setMethod("addPromoterDatabase", "IsoformDatabase", function(x,
   )
 
 ## filtering and handling functions
+#' @param x
+#'
+#' @param custom_promoter_annotation
+#' @param reference_annotation
+#' @param window
+#' @export
 #' @describeIn TESCoordinate.bins
-
-
 setGeneric("add3pEndDatabase",
            function(x, custom_promoter_annotation,
                     reference_annotation,
                     window) standardGeneric("add3pEndDatabase"))
 
-#' @describeIn PromoterAnnotation-class Getter for promoterIdMapping
-#' @aliases promoterIdMapping,PromoterAnnotation-method
 
+
+#' Title
+#'
+#' @param IsoformDatabase
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("add3pEndDatabase", "IsoformDatabase", function(x,
                                                              custom_promoter_annotation,
                                                              reference_annotation,

@@ -12,3 +12,4 @@ strandSort <- function(x) {
     GenomicRanges::sort(x[x@strand == "-"], decreasing = TRUE)
   )
 }
+
